@@ -1,0 +1,23 @@
+.content-list-main {
+  height: 250px;
+  width: auto;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.list-name {
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: Roboto, Arial;
+  margin-top: 20px;
+}
+
+.non-scroll-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+.videos {
+  width: max-content;
+  column-gap: 10px;
+}

@@ -1,0 +1,93 @@
+.video-card {
+  width: 150px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.videos {
+  margin-top: 10px;
+}
+
+.video-thumb {
+  width: 100%;
+}
+
+.videoInfo {
+  display: none;
+  background-color: #323441;
+  z-index: 100;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.video {
+  width: 100%;
+  height: 40%;
+}
+
+.video-actions {
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+  color: white;
+  margin-left: 5px;
+  align-items: center;
+}
+
+.video-actions-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-rating {
+  display: flex;
+  width: auto;
+  color: white;
+  font-family: Roboto, Arial;
+  column-gap: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.ua-logo {
+  width: 24px;
+  color: white;
+}
+
+.video-info-text {
+  color: white;
+  width: auto;
+  font-family: Roboto, Arial;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 30;
+  background-color: #323441;
+  word-wrap: break-word;
+  margin-top: 10px;
+}
+
+.video-card:hover {
+  width: 250px;
+  height: 400px;
+}
+
+.video-card:hover .videoInfo {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.video-card:hover .video-thumb {
+  display: none;
+}

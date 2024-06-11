@@ -1,0 +1,98 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  z-index: 1000;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+}
+
+.left {
+  display: flex;
+  margin-left: 40px;
+}
+
+.logo {
+  height: 25px;
+}
+
+.menu-btn {
+  display: none;
+}
+
+.middle {
+  display: flex;
+  width: 400px;
+  font-family: Roboto, Arial;
+  justify-content: space-between;
+  margin-left: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+.links {
+  transition: text-decoration 1s;
+  cursor: pointer;
+}
+.links:hover {
+  text-decoration: underline;
+  text-decoration-color: red;
+  text-decoration-thickness: 3px;
+}
+
+.right {
+  display: flex;
+  flex-grow: 1;
+  margin-right: 70px;
+  justify-content: end;
+}
+
+.right-container {
+  width: 180px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-family: Roboto, Arial;
+  align-items: center;
+}
+
+.header-icons {
+  cursor: pointer;
+}
+
+.profile-pic {
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+}
+
+.profile_show {
+  position: relative;
+}
+
+.profile-container {
+  position: absolute;
+  top: 100%;
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-family: Roboto, Arial;
+}
+
+@media screen and (max-width: 850px) {
+  .menu-btn {
+    display: block;
+    height: 25px;
+    color: white;
+    margin-right: 10px;
+  }
+
+  .left {
+    margin-left: 5px;
+  }
+  .middle {
+    display: none;
+  }
+}

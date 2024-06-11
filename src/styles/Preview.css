@@ -1,0 +1,70 @@
+.featured-container {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+}
+
+.movie-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-info {
+  width: 35%;
+  position: absolute;
+  bottom: 100px;
+  color: white;
+  margin-left: 40px;
+  font-family: Roboto, Arial;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-title {
+  width: 100%;
+}
+
+.desc-text {
+  margin-top: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 30;
+}
+
+.play-info {
+  display: flex;
+  width: 200px;
+  column-gap: 10px;
+  margin-top: 20px;
+}
+
+.pi-btns {
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+
+.pi-btns-info {
+  background-color: #6b8d8b;
+}
+
+@media screen and (max-width: 1000px) {
+  .movie-info {
+    bottom: 10px;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .movie-info {
+    bottom: 10px;
+    width: 60%;
+  }
+}
