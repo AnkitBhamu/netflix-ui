@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Preview from "./Preview";
 import ContentList from "./ContentList";
+import axios from "axios";
 
 export default function Home() {
   return (
