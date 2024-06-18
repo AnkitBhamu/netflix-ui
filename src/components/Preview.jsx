@@ -1,7 +1,5 @@
 import React from "react";
 import "../styles/Preview.css";
-import movie_image from "../images/movie_image.png";
-import m_title from "../images/movie_title.jpg";
 import { PlayArrow, InfoOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -11,14 +9,13 @@ let preview_content = {};
 export default function (props) {
   // get data from the back-end  for preview and list
   let [data_loaded, setDataloaded] = useState(false);
-
   function get_data() {
     preview_content = axios
-      .get("http://127.0.0.1:8080/api/movies/preview/series")
+      .get("http://127.0.0.1:8080/api/movies/preview/movies")
       .then((response) => {
         preview_content = response.data;
         setDataloaded(true);
-        console.log("data loaded!!");
+        // console.log("data loaded!!");
       })
       .catch((err) => console.log(err));
   }
@@ -42,10 +39,6 @@ export default function (props) {
           className="movie-title"
         />
         <div className="desc-text">
-          {/* Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
-          temporibus sapiente in ratione aspernatur. Mollitia odio placeat unde
-          consequuntur rem non consectetur. Voluptas reiciendis neque
-          consectetur quas repudiandae earum animi! */}
           {preview_content.desc ? preview_content.desc : ""}
         </div>
         <div className="play-info">

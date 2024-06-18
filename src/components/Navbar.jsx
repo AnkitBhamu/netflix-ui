@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Navbar.css";
 import { Search, Notifications, ArrowDropDown } from "@mui/icons-material";
 import profile_pic from "../images/WhatsApp Image 2023-11-19 at 13.19.34_086dd31e Cropped.jpg";
@@ -6,8 +6,10 @@ import { Menu } from "@mui/icons-material";
 
 export default function Navbar() {
   // add an event-handler for scroll
+  let [pselected, setp] = useState(false);
   window.addEventListener("scroll", () => {
     let element = document.querySelector(".header");
+    if (element === null) return;
     if (window.scrollY > 0) {
       element.style.backgroundColor = "black";
     } else element.style.backgroundColor = "";
@@ -44,12 +46,19 @@ export default function Navbar() {
             <Notifications />
           </div>
           <img src={profile_pic} alt="" className="profile-pic" />
-          <div className="profile_show">
+          <div
+            className="profile_show"
+            onClick={() => {
+              setp(!pselected);
+            }}
+          >
             <ArrowDropDown className="header-icons" />
-            <div className="profile-container">
-              <div>Settings</div>
-              <div>Logout</div>
-            </div>
+            {pselected === true ? (
+              <div className="profile-container">
+                <div>Settings</div>
+                <div>Logout</div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 .video-card {
-  width: 150px;
-  cursor: pointer;
+  width: 200px;
+  height: 150px;
   display: inline-block;
   vertical-align: top;
-  margin-right: 10px;
+  margin-right: 15px;
   position: relative;
   transition: 0.3s;
 }
@@ -18,7 +18,7 @@
 
 .videoInfo {
   display: none;
-  background-color: #323441;
+  background-color: #191a1e;
   z-index: 100;
   position: absolute;
   left: 0px;
@@ -47,6 +47,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .time-rating {
@@ -72,7 +73,6 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 30;
-  background-color: #323441;
   word-wrap: break-word;
   margin-top: 10px;
 }
