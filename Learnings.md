@@ -19,3 +19,19 @@
 9. hooks must always be called at the top of the components.
 
 10. zindex is very nice thing.
+
+11. if outermost flex container is always set at 100% width is set for a flex container then it cannot be shrunken from it.
+
+12. When you create a flex container various default flex rules come into play.
+    Two of these default rules are flex-direction: row and align-items: stretch. This means that flex items will automatically align in a single row, and each item will fill the height of the container.
+
+13. controlled form verses uncontrolled form.
+    link for --- "https://www.geeksforgeeks.org/how-to-handle-multiple-input-field-in-react-form-with-a-single-function/"
+
+    link2 : "https://legacy.reactjs.org/docs/uncontrolled-components.html"
+
+14. refs can only be used in case of DOM elements or class components.
+
+15. use cookies if we want to store the data of the user which must be deleted after some time.
+
+16. cookies are always attached to document

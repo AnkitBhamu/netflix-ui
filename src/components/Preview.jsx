@@ -3,15 +3,21 @@ import "../styles/Preview.css";
 import { PlayArrow, InfoOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 let preview_content = {};
 
 export default function (props) {
   // get data from the back-end  for preview and list
+  let navigate = useNavigate();
   let [data_loaded, setDataloaded] = useState(false);
+
+  function playvideo() {
+    navigate("/player", { state: { link: preview_content.video } });
+  }
   function get_data() {
     preview_content = axios
-      .get("http://127.0.0.1:8080/api/movies/preview/movies")
+      .get("http://localhost:8080/api/movies/preview/movies")
       .then((response) => {
         preview_content = response.data;
         setDataloaded(true);
@@ -42,7 +48,7 @@ export default function (props) {
           {preview_content.desc ? preview_content.desc : ""}
         </div>
         <div className="play-info">
-          <div className="pi-btns">
+          <div className="pi-btns" onClick={playvideo}>
             <PlayArrow />
             Play
           </div>

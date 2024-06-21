@@ -2,7 +2,7 @@
   height: 160px;
   width: auto;
   margin-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .list-name {
@@ -16,8 +16,42 @@
 .non-scroll-wrapper {
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 .videos {
   width: max-content;
   column-gap: 10px;
+}
+
+.navigation-bars-bck {
+  position: absolute;
+  width: 40px;
+  background-color: #15141491;
+  z-index: 120;
+  top: 12px;
+  border-radius: 6px;
+  height: 137px;
+  border: 1px solid #181616;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.navigation-bars-fwd {
+  position: absolute;
+  width: 40px;
+  right: 0px;
+  background-color: #15141491;
+  z-index: 120;
+  top: 12px;
+  border-radius: 6px;
+  height: 137px;
+  border: 1px solid #181616;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }

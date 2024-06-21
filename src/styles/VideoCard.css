@@ -1,11 +1,12 @@
 .video-card {
-  width: 200px;
+  width: 250px;
   height: 150px;
   display: inline-block;
   vertical-align: top;
   margin-right: 15px;
   position: relative;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .videos {
@@ -13,13 +14,17 @@
 }
 
 .video-thumb {
-  width: 100%;
+  border: 1px solid #605a5a;
+  border-radius: 12px;
+  width: calc(100% - 12px);
+  object-fit: cover;
+  height: calc(100% - 12px);
 }
 
 .videoInfo {
   display: none;
-  background-color: #191a1e;
-  z-index: 100;
+  /* background-color: #191a1e; */
+  background-color: black;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -27,7 +32,8 @@
 
 .video {
   width: 100%;
-  height: 40%;
+  height: 150px;
+  object-fit: cover;
 }
 
 .video-actions {
@@ -64,6 +70,9 @@
 .ua-logo {
   width: 24px;
   color: white;
+  border: 1px solid #484339;
+  padding: 2px;
+  margin: 3px;
 }
 
 .video-info-text {
@@ -78,8 +87,9 @@
 }
 
 .video-card:hover {
-  width: 250px;
+  width: 300px;
   height: 400px;
+  z-index: 100;
 }
 
 .video-card:hover .videoInfo {

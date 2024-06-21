@@ -1,0 +1,34 @@
+.reg-success-main {
+  width: 100vw;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reg-success-content {
+  max-width: 350px;
+  max-height: 350px;
+  width: 80%;
+  height: 80%;
+  background-color: #282323;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Roboto, Arial;
+  color: white;
+  justify-content: center;
+  row-gap: 30px;
+  border-radius: 10px;
+}
+
+.done-container {
+  width: 100px;
+  height: 100px;
+  border: 1px solid white;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+}

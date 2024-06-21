@@ -11,7 +11,10 @@ export default function VideoCard(props) {
     navigate("/player", { state: { name: props.videodata.name, link: link } });
   }
   return (
-    <div className="video-card">
+    <div
+      className="video-card"
+      style={{ transform: `translateX(${props.translate}px)` }}
+    >
       {/* <img className="video-thumb" src={movie_banner} alt="" /> */}
       <img className="video-thumb" src={props.videodata.thumb_img} alt="" />
       <div className="videoInfo">
@@ -42,8 +45,12 @@ export default function VideoCard(props) {
         </div>
         <div className="time-rating">
           {/* <span>1 hr 50 mins</span> */}
+          <span>{props.videodata.name}</span>
+        </div>
+        <div className="time-rating">
+          {/* <span>1 hr 50 mins</span> */}
           <span>{props.videodata.duration}</span>
-          <img className="ua-logo" src={ua} alt="" />
+          <span className="ua-logo">+{props.videodata.age_limit}</span>
           <span>{props.videodata.year}</span>
         </div>
         <div className="video-info-text">

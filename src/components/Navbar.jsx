@@ -3,10 +3,11 @@ import "../styles/Navbar.css";
 import { Search, Notifications, ArrowDropDown } from "@mui/icons-material";
 import profile_pic from "../images/WhatsApp Image 2023-11-19 at 13.19.34_086dd31e Cropped.jpg";
 import { Menu } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 
 export default function Navbar() {
-  // add an event-handler for scroll
   let [pselected, setp] = useState(false);
+  let navigate = useNavigate();
   window.addEventListener("scroll", () => {
     let element = document.querySelector(".header");
     if (element === null) return;
@@ -55,8 +56,15 @@ export default function Navbar() {
             <ArrowDropDown className="header-icons" />
             {pselected === true ? (
               <div className="profile-container">
-                <div>Settings</div>
-                <div>Logout</div>
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    navigate("/editAccount", { replace: false });
+                  }}
+                >
+                  Account
+                </div>
+                <div style={{ cursor: "pointer" }}>Logout</div>
               </div>
             ) : null}
           </div>

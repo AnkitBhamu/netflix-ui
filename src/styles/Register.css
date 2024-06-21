@@ -1,0 +1,127 @@
+.register-main {
+  background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(18, 0, 36, 1) 16%,
+      rgba(47, 0, 255, 0) 100%
+    ),
+    url("../images/IN-en-20240610-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.register-header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-register {
+  height: 30px;
+  margin-left: 40px;
+}
+
+.right-register {
+  width: 150px;
+  margin-right: 20px;
+}
+
+.signin-btn-register {
+  height: 40px;
+  width: 100%;
+  background-color: red;
+  color: white;
+  font-family: Roboto, Arial;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+}
+
+.register-content {
+  font-family: Roboto, Arial;
+  color: white;
+  max-width: 800px;
+}
+
+.basic-intro {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 30px;
+}
+.register-text {
+  font-size: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.register-email {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  /* width: 80%; */
+  justify-content: center;
+  position: relative;
+}
+
+.email-login-register,
+.pass-login-register {
+  height: 50px;
+  background-color: #2d202082;
+  border-radius: 5px;
+  color: white;
+  padding-left: 10px;
+  width: 60%;
+  border: 1px solid #5f4141;
+}
+
+.email-login-register::placeholder,
+.pass-login-register::placeholder {
+  font-family: Roboto, Arial;
+  font-size: 15px;
+  color: white;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+.pass-visible {
+  position: absolute;
+  cursor: pointer;
+  left: calc((10px + 60%) - 15px);
+}
+.get-started {
+  height: 55px;
+  width: 25%;
+  border-radius: 5px;
+  margin-left: 10px;
+  background: red;
+  color: white;
+  font-family: "Roboto", Arial;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+  .register-text {
+    font-size: 11px;
+  }
+
+  .basic-intro {
+    font-size: 25px;
+  }
+}
