@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/VideoCard.css";
-import { PlayArrow, ThumbUp, ThumbDown, Add } from "@mui/icons-material";
-import ua from "../images/ua.png";
+import { PlayArrow, ThumbUp, ThumbDown, Add, Done } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 
 export default function VideoCard(props) {
-  let navigate = useNavigate();
-  function playvideo(link) {
-    console.log("link is : ", link);
-    navigate("/player", { state: { name: props.videodata.name, link: link } });
+  let [added, listadd] = useState(props.cardType === "mylist" ? true : false);
+  let [cookies, setcookie, removecookie] = useCookies();
+  let [hovered, sethov] = useState(false);
+
+  async function updatemylist(mid) {
+    try {
+      let response = await axios.post(
+        `http://127.0.0.1:8080/api/users/updateMyList/${cookies["user-details"]._id}`,
+        { mid: mid, mode: added === false ? "add" : "remove" }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   }
-  return (
-    <div
-      className="video-card"
-      style={{ transform: `translateX(${props.translate}px)` }}
-    >
-      {/* <img className="video-thumb" src={movie_banner} alt="" /> */}
-      <img className="video-thumb" src={props.videodata.thumb_img} alt="" />
+
+  let navigate = useNavigate();
+
+  function renderVideoInfo() {
+    return (
       <div className="videoInfo">
-        {/* <video src={video} autoPlay muted loop className="video"></video> */}
         <video
           src={props.videodata.trailer}
           autoPlay
@@ -33,8 +40,18 @@ export default function VideoCard(props) {
           >
             <PlayArrow />
           </div>
-          <div className="video-actions-btn">
-            <Add />
+          <div
+            onClick={() => {
+              updatemylist(props.videodata._id);
+              // if this is my list then only option must be of removing from the list so dont add to database.
+              if (props.mylistrender) {
+                console.log("got the parent updater fn");
+                props.mylistrender(!props.parentrenderstatus);
+              } else listadd(!added);
+            }}
+            className="video-actions-btn"
+          >
+            {added === true ? <Done /> : <Add />}
           </div>
           <div className="video-actions-btn">
             <ThumbUp />
@@ -44,11 +61,9 @@ export default function VideoCard(props) {
           </div>
         </div>
         <div className="time-rating">
-          {/* <span>1 hr 50 mins</span> */}
           <span>{props.videodata.name}</span>
         </div>
         <div className="time-rating">
-          {/* <span>1 hr 50 mins</span> */}
           <span>{props.videodata.duration}</span>
           <span className="ua-logo">+{props.videodata.age_limit}</span>
           <span>{props.videodata.year}</span>
@@ -57,6 +72,26 @@ export default function VideoCard(props) {
           <div style={{ marginLeft: "10px" }}>{props.videodata.desc}</div>
         </div>
       </div>
+    );
+  }
+
+  function playvideo(link) {
+    navigate("/player", { state: { name: props.videodata.name, link: link } });
+  }
+  return (
+    <div
+      className={[props.class]}
+      style={{ transform: `translateX(${props.translate}px)` }}
+      onMouseEnter={() => {
+        sethov(true);
+      }}
+      onMouseLeave={() => {
+        sethov(false);
+      }}
+    >
+      <img className="video-thumb" src={props.videodata.thumb_img} alt="" />
+
+      {hovered === true ? renderVideoInfo() : null}
     </div>
   );
 }

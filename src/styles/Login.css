@@ -66,6 +66,17 @@
   margin-bottom: 70px;
 }
 
+.pass-container {
+  position: relative;
+}
+
+.visiblity-login {
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  cursor: pointer;
+}
+
 .email-login::placeholder,
 .pass-login::placeholder,
 .pass-login::target-text,
@@ -104,4 +115,6 @@
 .rem-me {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  column-gap: 5px;
 }

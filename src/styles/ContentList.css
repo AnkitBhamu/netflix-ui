@@ -2,7 +2,7 @@
   height: 160px;
   width: auto;
   margin-left: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .list-name {
@@ -28,7 +28,7 @@
   width: 40px;
   background-color: #15141491;
   z-index: 120;
-  top: 12px;
+  top: 16px;
   border-radius: 6px;
   height: 137px;
   border: 1px solid #181616;
@@ -45,7 +45,7 @@
   right: 0px;
   background-color: #15141491;
   z-index: 120;
-  top: 12px;
+  top: 16px;
   border-radius: 6px;
   height: 137px;
   border: 1px solid #181616;

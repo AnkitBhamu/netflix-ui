@@ -32,12 +32,10 @@ export default function ContentList(props) {
       <div
         className="non-scroll-wrapper"
         onMouseEnter={() => {
-          console.log("hovered");
           setHovered(true);
         }}
         onMouseLeave={() => {
           setHovered(false);
-          console.log("leaved");
         }}
       >
         {videosHovered === true ? (
@@ -45,7 +43,9 @@ export default function ContentList(props) {
             <div
               className="navigation-bars-bck"
               onClick={() => {
-                setTranslate(translate + 260);
+                if (translate != 0) {
+                  setTranslate(translate + 242);
+                }
               }}
             >
               <ArrowBackIos style={{ width: "20px", height: "20px" }} />
@@ -54,7 +54,14 @@ export default function ContentList(props) {
             <div
               className="navigation-bars-fwd"
               onClick={() => {
-                setTranslate(translate - 260);
+                if (
+                  Math.abs(translate) <=
+                  document.querySelector(".videos").getBoundingClientRect()
+                    .width -
+                    window.innerWidth
+                ) {
+                  setTranslate(translate - 242);
+                }
               }}
             >
               <ArrowForwardIos style={{ width: "20px", height: "20px" }} />
@@ -64,7 +71,12 @@ export default function ContentList(props) {
 
         <div className="videos">
           {m_data.map((item, index) => (
-            <VideoCard translate={translate} key={index} videodata={item} />
+            <VideoCard
+              class={"video-card"}
+              translate={translate}
+              key={index}
+              videodata={item}
+            />
           ))}
         </div>
       </div>

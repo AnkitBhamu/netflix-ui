@@ -4,10 +4,22 @@ import Preview from "./Preview";
 import ContentList from "./ContentList";
 import axios from "axios";
 import "../styles/Home.css";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router";
 
 export default function Home() {
-  // get data from the back-end  for preview and list
+  let [cookie, setcookie, removecookie] = useCookies();
   let [list_data, setList] = useState([]);
+  let navigate = useNavigate();
+
+  function checkUserLogged() {
+    let item = cookie["user-details"];
+    if (!item) {
+      navigate("/login");
+    }
+  }
+
+  useEffect(checkUserLogged, []);
 
   function get_data() {
     axios

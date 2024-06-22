@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
 import { useState } from "react";
 import Account from "./components/Account";
+import MyList from "./components/MyList";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/home" Component={Home}></Route>
+          <Route exact path="/mylist" Component={MyList}></Route>
           <Route exact path="/" Component={Register}></Route>
           <Route exact path="/login" Component={Login}></Route>
           <Route exact path="/register" Component={Register}></Route>

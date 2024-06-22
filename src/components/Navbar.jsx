@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import "../styles/Navbar.css";
 import { Search, Notifications, ArrowDropDown } from "@mui/icons-material";
-import profile_pic from "../images/WhatsApp Image 2023-11-19 at 13.19.34_086dd31e Cropped.jpg";
+import profile_pic from "../images/Netflix-avatar.png";
 import { Menu } from "@mui/icons-material";
 import { useNavigate } from "react-router";
+import { useCookies } from "react-cookie";
 
-export default function Navbar() {
+export default function Navbar(props) {
   let [pselected, setp] = useState(false);
   let navigate = useNavigate();
+  let [cookie, setcookie, removecookie] = useCookies();
+
   window.addEventListener("scroll", () => {
     let element = document.querySelector(".header");
     if (element === null) return;
@@ -31,10 +34,19 @@ export default function Navbar() {
 
       <div className="middle">
         <div className="links">Series</div>
-        <div className="links">Homepage</div>
+        <div
+          className="links"
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
+          Homepage
+        </div>
         <div className="links">Movies</div>
-        <div className="links">New and popular</div>
-        <div className="links">My list</div>
+        {/* <div className="links">New and popular</div> */}
+        <div className="links" onClick={() => navigate("/mylist")}>
+          My list
+        </div>
       </div>
 
       <div className="right">
@@ -42,7 +54,6 @@ export default function Navbar() {
           <div className="header-icons">
             <Search />
           </div>
-          <div>KID</div>
           <div className="header-icons">
             <Notifications />
           </div>
@@ -64,7 +75,15 @@ export default function Navbar() {
                 >
                   Account
                 </div>
-                <div style={{ cursor: "pointer" }}>Logout</div>
+                <div
+                  onClick={() => {
+                    removecookie("user-details");
+                    navigate("/login");
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  Logout
+                </div>
               </div>
             ) : null}
           </div>

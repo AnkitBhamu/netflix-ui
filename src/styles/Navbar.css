@@ -1,7 +1,7 @@
 .header {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 70px;
   z-index: 1000;
   position: fixed;
   top: 0px;
@@ -26,20 +26,21 @@
   display: flex;
   width: 400px;
   font-family: Roboto, Arial;
-  justify-content: space-between;
+  column-gap: 15px;
   margin-left: 20px;
   color: white;
   font-weight: 500;
 }
 
 .links {
-  transition: text-decoration 1s;
+  transition: text-decoration 0.4s;
   cursor: pointer;
+  font-size: 20px;
 }
 .links:hover {
-  text-decoration: underline;
-  text-decoration-color: red;
-  text-decoration-thickness: 3px;
+  transform: scale(1.1);
+  font-weight: bolder;
+  z-index: 1000;
 }
 
 .right {
@@ -52,10 +53,11 @@
 .right-container {
   width: 180px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   color: white;
   font-family: Roboto, Arial;
   align-items: center;
+  column-gap: 10px;
 }
 
 .header-icons {
@@ -65,7 +67,7 @@
 .profile-pic {
   height: 30px;
   width: 30px;
-  border-radius: 30px;
+  border-radius: 2px;
 }
 
 .profile_show {
@@ -82,7 +84,7 @@
   left: -52px;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 730px) {
   .menu-btn {
     display: block;
     height: 25px;

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Account.css";
-import Profile from "../images/WhatsApp Image 2023-11-19 at 13.19.34_086dd31e Cropped.jpg";
+import Profile from "../images/Netflix-avatar.png";
 import { Edit } from "@mui/icons-material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 // remaining thing is to update and send the final data to the user.
 export default function Account() {
@@ -10,6 +13,65 @@ export default function Account() {
   let [username, setUsername] = useState("");
   let [email, setEmail] = useState("");
   let [pass, setPass] = useState("");
+  let [uid, setuid] = useState("");
+  let [cookies, setcookie, removecookie] = useCookies();
+  let navigate = useNavigate();
+
+  function setCookie(response) {
+    let now = new Date();
+    setcookie("user-details", JSON.stringify(response.data), {
+      expires: new Date(now.setDate(now.getDate() + 7)),
+    });
+  }
+
+  async function updateprofile() {
+    let data = {
+      email: email,
+      password: pass,
+      name: username,
+      id: uid,
+    };
+
+    try {
+      let response = await axios.post(
+        "http://127.0.0.1:8080/api/users/update",
+        data
+      );
+
+      // update the cookie so that latest data can be used evert time
+      setCookie(response);
+      alert("Profile updated successfully!!");
+    } catch (err) {
+      alert("Profile updating failed!!");
+    }
+  }
+
+  async function getUserData() {
+    let user_cookie = cookies["user-details"];
+
+    if (user_cookie) {
+      try {
+        let response = await axios.get(
+          `http://127.0.0.1:8080/api/users/getUser/${user_cookie._id}`
+        );
+
+        setUsername(response.data.name);
+        setEmail(response.data.email);
+        setPass(response.data.password);
+        setuid(response.data._id);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      alert("Please sign in again!!");
+      navigate("/login");
+    }
+  }
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
   return (
     <div className="accounts-main">
       <div className="account-content">
@@ -77,7 +139,9 @@ export default function Account() {
         </div>
         <div className="border-line"></div>
         <div className="final-btns">
-          <button className="acc-btns save">Save</button>
+          <button className="acc-btns save" onClick={() => updateprofile()}>
+            Save
+          </button>
           <button className="acc-btns cancel">Cancel</button>
           <button className="acc-btns delete">Delete Account</button>
         </div>

@@ -14,12 +14,9 @@ export default function Register() {
   let [pass, setPass] = useState("");
   let [regsuccess, setRegStatus] = useState(false);
   let [showPass, setShowPass] = useState(false);
-
   let [userdetails, setUserDetails] = useState({});
   let [navigateHome, setNavigation] = useState(false);
   let navigate = useNavigate();
-
-  // converts the global cookie to json object
   let [cookie, setcookie, removecookie] = useCookies();
 
   function checkUserLogged() {
@@ -42,12 +39,10 @@ export default function Register() {
   }
 
   async function handleSubmit() {
-    console.log("email is ", email);
-    console.log("pass is : ", pass);
     let data = {
       name: "",
       email: email,
-      Password: pass,
+      password: pass,
     };
 
     let response = await axios.post(
@@ -124,7 +119,7 @@ export default function Register() {
                       setShowPass(!showPass);
                     }}
                   >
-                    {showPass === true ? <Visibility /> : <VisibilityOff />}
+                    {showPass === true ? <VisibilityOff /> : <Visibility />}
                   </div>
                 </>
               )}

@@ -35,3 +35,18 @@
 15. use cookies if we want to store the data of the user which must be deleted after some time.
 
 16. cookies are always attached to document
+
+17. grid auto-fit and minmax property is very good thing to handle the proper griddig automatically acc to content.
+    link - https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
+
+18. grid does not calculates the size of cols first it just assign space to them based on calculation that we made through grid-template rows and minmax. (it is not flexible like flexbox which calculates the space each container will take and then assign the width to each container)
+
+19. cleanup function or return fn in useeffect will be executed when the component will unmount so we can optimise the code bit faster here without making api requests at every time.
+
+20. sometimes the scroll bar also decrease the width when it is shown
+
+21. always try to make things dynamic don't preload them like in case of videos if you say you will do everything via css pseudo class then its quit possible that you preload the videos in them and thus increase the size of the document.
+
+22. re rendering will not require much power then loading everything.
+
+23. for transition to work its initial class must be there otherwise it will be glitch.
