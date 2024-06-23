@@ -3,12 +3,13 @@ import Navbar from "./Navbar";
 import Preview from "./Preview";
 import ContentList from "./ContentList";
 import axios from "axios";
-import "../styles/Home.css";
+import Footer from "./Footer";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 export default function Home() {
   let [cookie, setcookie, removecookie] = useCookies();
+  let [content_type, setcontent] = useState("movies");
   let [list_data, setList] = useState([]);
   let navigate = useNavigate();
 
@@ -19,11 +20,11 @@ export default function Home() {
     }
   }
 
-  useEffect(checkUserLogged, []);
+  useEffect(checkUserLogged, [content_type]);
 
   function get_data() {
     axios
-      .get("http://127.0.0.1:8080/api/movies/listsAll")
+      .get(`http://127.0.0.1:8080/api/movies/listsAll/${content_type}`)
       .then((response) => {
         setList(response.data.data);
       })
@@ -31,25 +32,19 @@ export default function Home() {
   }
   useEffect(() => {
     get_data();
-  }, []);
+  }, [content_type]);
 
   return (
     <div>
-      <Navbar />
-      <Preview />
+      <Navbar setType={setcontent} />
+      <Preview type={content_type} />
       <div className="content">
         {list_data.map((item, index) => (
           <ContentList key={index} list_data={item} />
         ))}
-
-        <div className="footer">
-          <img
-            style={{ height: "25px" }}
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-          ></img>
-        </div>
       </div>
       {/* <VideoPlayer /> */}
+      <Footer />
     </div>
   );
 }

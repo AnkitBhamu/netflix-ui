@@ -74,6 +74,15 @@ export default function Account() {
 
   return (
     <div className="accounts-main">
+      <div className="accounts-header">
+        <div className="acc-left-header">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
+            className="logo-account"
+            alt=""
+          />
+        </div>
+      </div>
       <div className="account-content">
         <div className="account-text">Edit Account</div>
         <div className="border-line"></div>

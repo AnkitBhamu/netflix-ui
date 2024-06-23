@@ -15,7 +15,6 @@ export default function Register() {
   let [regsuccess, setRegStatus] = useState(false);
   let [showPass, setShowPass] = useState(false);
   let [userdetails, setUserDetails] = useState({});
-  let [navigateHome, setNavigation] = useState(false);
   let navigate = useNavigate();
   let [cookie, setcookie, removecookie] = useCookies();
 

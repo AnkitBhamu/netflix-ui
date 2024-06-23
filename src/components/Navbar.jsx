@@ -33,16 +33,30 @@ export default function Navbar(props) {
       </div>
 
       <div className="middle">
-        <div className="links">Series</div>
         <div
           className="links"
           onClick={() => {
-            navigate("/home");
+            props.setType ? props.setType("series") : navigate("/home");
+          }}
+        >
+          Series
+        </div>
+        <div
+          className="links"
+          onClick={() => {
+            props.setType ? props.setType("movies") : navigate("/home");
           }}
         >
           Homepage
         </div>
-        <div className="links">Movies</div>
+        <div
+          className="links"
+          onClick={() => {
+            props.setType ? props.setType("movies") : navigate("/home");
+          }}
+        >
+          Movies
+        </div>
         {/* <div className="links">New and popular</div> */}
         <div className="links" onClick={() => navigate("/mylist")}>
           My list
@@ -63,6 +77,7 @@ export default function Navbar(props) {
             onClick={() => {
               setp(!pselected);
             }}
+            onMouseLeave={() => setp(false)}
           >
             <ArrowDropDown className="header-icons" />
             {pselected === true ? (

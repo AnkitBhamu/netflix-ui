@@ -50,3 +50,5 @@
 22. re rendering will not require much power then loading everything.
 
 23. for transition to work its initial class must be there otherwise it will be glitch.
+
+24. navigating to same comp does not cause re-mounting

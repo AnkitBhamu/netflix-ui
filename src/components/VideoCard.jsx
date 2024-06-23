@@ -4,11 +4,13 @@ import { PlayArrow, ThumbUp, ThumbDown, Add, Done } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import { Info } from "@mui/icons-material";
 
 export default function VideoCard(props) {
   let [added, listadd] = useState(props.cardType === "mylist" ? true : false);
   let [cookies, setcookie, removecookie] = useCookies();
   let [hovered, sethov] = useState(false);
+  let [itrue, setinfo] = useState(false);
 
   async function updatemylist(mid) {
     try {
@@ -59,6 +61,16 @@ export default function VideoCard(props) {
           <div className="video-actions-btn">
             <ThumbDown />
           </div>
+
+          <div className="more-opt">
+            <div
+              onClick={() => setinfo(!itrue)}
+              onMouseLeave={() => setinfo(false)}
+              className="more-info"
+            >
+              <Info />
+            </div>
+          </div>
         </div>
         <div className="time-rating">
           <span>{props.videodata.name}</span>
@@ -68,9 +80,12 @@ export default function VideoCard(props) {
           <span className="ua-logo">+{props.videodata.age_limit}</span>
           <span>{props.videodata.year}</span>
         </div>
-        <div className="video-info-text">
-          <div style={{ marginLeft: "10px" }}>{props.videodata.desc}</div>
-        </div>
+
+        {itrue === true ? (
+          <div className="video-info-text">
+            <div style={{ marginLeft: "10px" }}>{props.videodata.desc}</div>
+          </div>
+        ) : null}
       </div>
     );
   }
@@ -81,7 +96,10 @@ export default function VideoCard(props) {
   return (
     <div
       className={[props.class]}
-      style={{ transform: `translateX(${props.translate}px)` }}
+      style={{
+        transform: `translateX(${props.translate}px)`,
+        height: itrue === true ? "400px" : "",
+      }}
       onMouseEnter={() => {
         sethov(true);
       }}

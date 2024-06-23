@@ -3,6 +3,28 @@
   justify-content: center;
 }
 
+.accounts-header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-account {
+  height: 25px;
+}
+
+.acc-left-header {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
 .account-content {
   max-width: 600px;
   width: 80%;

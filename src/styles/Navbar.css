@@ -1,7 +1,7 @@
 .header {
   display: flex;
   align-items: center;
-  height: 70px;
+  height: 60px;
   z-index: 1000;
   position: fixed;
   top: 0px;
@@ -35,7 +35,7 @@
 .links {
   transition: text-decoration 0.4s;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
 }
 .links:hover {
   transform: scale(1.1);

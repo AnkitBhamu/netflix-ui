@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function VideoPlayer(props) {
   let params = useLocation();
   let navigate = useNavigate();
+
   function goBack(event) {
     navigate("/", { replace: "true" });
   }

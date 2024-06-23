@@ -5,7 +5,7 @@
   vertical-align: top;
   margin-right: 5px;
   position: relative;
-  transition: 1s;
+  transition: 0.3s;
   cursor: pointer;
 }
 
@@ -14,6 +14,7 @@
 }
 
 .video-thumb {
+  /* border: 1px solid #605a5a; */
   width: 100%;
   object-fit: cover;
   height: calc(100% - 2px);
@@ -31,12 +32,28 @@
 
 .video-actions {
   display: flex;
-  width: 150px;
-  justify-content: space-between;
+  width: 100%;
+  column-gap: 10px;
   color: white;
   margin-left: 5px;
   align-items: center;
   margin-top: 10px;
+}
+
+.more-opt {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  flex: 1;
+}
+
+.more-info {
+  height: 30px;
+  width: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  display: flex;
 }
 
 .video-actions-btn {
@@ -59,6 +76,7 @@
   margin-top: 10px;
   margin-left: 10px;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .ua-logo {
@@ -71,6 +89,7 @@
 
 .video-info-text {
   color: white;
+  display: none;
   width: auto;
   font-family: Roboto, Arial;
   display: -webkit-box;
@@ -79,21 +98,21 @@
   word-wrap: break-word;
   margin-top: 10px;
   padding-bottom: 25px;
-  padding-right: 10px;
 }
 
 .video-card:hover {
-  height: auto;
+  /* height: auto; */
   z-index: 100;
-  -webkit-box-shadow: 0px 10px 13px -7px #000000,
-    7px 20px 15px 13px rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 10px 13px -7px #000000, 7px 20px 15px 13px rgba(0, 0, 0, 0.6);
+  width: 300px;
+  height: 300px;
 }
 
 .video-card:hover .videoInfo {
   display: block;
-  background-color: #2c2727;
-  width: calc(300px - 1px);
+  /* background-color: #2c2727; */
+  background-color: black;
+  width: calc(100% - 1px);
+  position: absolute;
 }
 
 .video-card:hover .video-thumb {

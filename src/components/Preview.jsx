@@ -17,20 +17,22 @@ export default function (props) {
   }
   function get_data() {
     preview_content = axios
-      .get("http://localhost:8080/api/movies/preview/movies")
+      .get("http://localhost:8080/api/movies/preview/" + props.type)
       .then((response) => {
         preview_content = response.data;
         setDataloaded(true);
-        // console.log("data loaded!!");
       })
       .catch((err) => console.log(err));
   }
   useEffect(() => {
     get_data();
-  }, []);
+  }, [props.type]);
+
   return (
     <div className="featured-container">
-      <div className="content-type">Movies</div>
+      <div className="content-type">
+        {props.type && props.type === "series" ? "Series" : "Movies"}
+      </div>
       {/* <img src={movie_image} alt="" className="movie-image" /> */}
       <img
         src={preview_content.cover_img ? preview_content.cover_img : ""}

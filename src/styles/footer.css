@@ -1,0 +1,40 @@
+.footer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  color: white;
+  font-family: Roboto, Arial;
+  font-size: 20px;
+  row-gap: 10px;
+  align-items: center;
+  margin-top: 150px;
+  margin-bottom: 20px;
+}
+
+.fa {
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terms {
+  display: flex;
+  column-gap: 10px;
+}
+
+.footer-links {
+  text-decoration: none;
+  color: white;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 550px) {
+  .footer-links {
+    font-size: 8px;
+  }
+}
