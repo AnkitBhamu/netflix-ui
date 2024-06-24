@@ -15,7 +15,8 @@ export default function VideoCard(props) {
   async function updatemylist(mid) {
     try {
       let response = await axios.post(
-        `http://127.0.0.1:8080/api/users/updateMyList/${cookies["user-details"]._id}`,
+        process.env.REACT_APP_API_URL +
+          `/api/users/updateMyList/${cookies["user-details"]._id}`,
         { mid: mid, mode: added === false ? "add" : "remove" }
       );
     } catch (err) {

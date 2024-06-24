@@ -14,7 +14,7 @@ export default function ContentList(props) {
     let final_data = await Promise.all(
       l_data.map((item) =>
         axios
-          .get("http://127.0.0.1:8080/api/movies/moviebyId/" + item)
+          .get(process.env.REACT_APP_API_URL + "/api/movies/moviebyId/" + item)
           .then((response) => response.data)
           .catch((err) => console.log(err))
       )

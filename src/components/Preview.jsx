@@ -17,7 +17,7 @@ export default function (props) {
   }
   function get_data() {
     preview_content = axios
-      .get("http://localhost:8080/api/movies/preview/" + props.type)
+      .get(process.env.REACT_APP_API_URL + "/api/movies/preview/" + props.type)
       .then((response) => {
         preview_content = response.data;
         setDataloaded(true);

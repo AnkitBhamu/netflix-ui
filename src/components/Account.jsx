@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import "../styles/Account.css";
 import Profile from "../images/Netflix-avatar.png";
 import { Edit } from "@mui/icons-material";
@@ -16,7 +16,6 @@ export default function Account() {
   let [uid, setuid] = useState("");
   let [cookies, setcookie, removecookie] = useCookies();
   let navigate = useNavigate();
-
   function setCookie(response) {
     let now = new Date();
     setcookie("user-details", JSON.stringify(response.data), {
@@ -34,7 +33,7 @@ export default function Account() {
 
     try {
       let response = await axios.post(
-        "http://127.0.0.1:8080/api/users/update",
+        process.env.REACT_APP_API_URL + "/api/users/update",
         data
       );
 
@@ -52,7 +51,8 @@ export default function Account() {
     if (user_cookie) {
       try {
         let response = await axios.get(
-          `http://127.0.0.1:8080/api/users/getUser/${user_cookie._id}`
+          process.env.REACT_APP_API_URL +
+            `/api/users/getUser/${user_cookie._id}`
         );
 
         setUsername(response.data.name);

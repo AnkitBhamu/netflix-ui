@@ -24,7 +24,9 @@ export default function Home() {
 
   function get_data() {
     axios
-      .get(`http://127.0.0.1:8080/api/movies/listsAll/${content_type}`)
+      .get(
+        process.env.REACT_APP_API_URL + `/api/movies/listsAll/${content_type}`
+      )
       .then((response) => {
         setList(response.data.data);
       })

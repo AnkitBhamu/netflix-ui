@@ -45,7 +45,7 @@ export default function Register() {
     };
 
     let response = await axios.post(
-      "http://localhost:8080/api/auth/register",
+      process.env.REACT_APP_API_URL + "/api/auth/register",
       data
     );
 
