@@ -60,3 +60,28 @@
 27. div's by default widt is 100% of its parent but for inline block its equal to its content width.
 
 The flexbox algorithm refuses to shrink a child below its minimum size.
+
+1. promises are added to the queue only after the main frame executes
+2. for functions inside any fn or global scope they firstly added to the environment table
+   example ->
+   fn hello(){
+   let val;
+   let val2;
+   function hello2(){
+   .... do something -----> env table at the start is like this ->
+   val -> undefined
+   val2 -> undefined
+   hello2 -> closure(args,opcode,parent-env::env::global env)  
+    }
+   }
+
+fn hello(){
+let val;
+let val2;
+let fn = function hello2(){
+.... do something -----> env table at the start is like this ->
+val -> undefined
+val2 -> undefined
+fn -> undefined  
+ }
+}
