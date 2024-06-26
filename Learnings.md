@@ -6,24 +6,24 @@
 
 <!-- *******IMPORTANT THING -->
 
-4. There are two scripts in js and one is CommonJs in which we can use only require in importing things but in ECMA script import can be used , which to use must be specified im package.json file which node by default reads.
+4.  There are two scripts in js and one is CommonJs in which we can use only require in importing things but in ECMA script import can be used , which to use must be specified im package.json file which node by default reads.
 
-5. for common js we use module.exports and for ECMA we use only export {var name};
+5.  for common js we use module.exports and for ECMA we use only export {var name};
 
-6. require are syncronous but import are not sync
+6.  require are syncronous but import are not sync
 
-7. do not apply event listners on global objects as they may run the function on vanished components.
+7.  do not apply event listners on global objects as they may run the function on vanished components.
 
-8. for every componenet in react there are some global objects already there which we can access through the hooks like usparams , uselocation and also we have another things.
+8.  for every componenet in react there are some global objects already there which we can access through the hooks like usparams , uselocation and also we have another things.
 
-9. hooks must always be called at the top of the components.
+9.  hooks must always be called at the top of the components.
 
 10. zindex is very nice thing.
 
 11. if outermost flex container is always set at 100% width is set for a flex container then it cannot be shrunken from it.
 
 12. When you create a flex container various default flex rules come into play.
-    Two of these default rules are flex-direction: row and align-items: stretch. This means that flex items will automatically align in a single row, and each item will fill the height of the container.
+    Two of these default rules are flex-direction: row and align-items: stretch. This means that flex items will automatically align in a single row, and each item will fill the height of the max element of the container.
 
 13. controlled form verses uncontrolled form.
     link for --- "https://www.geeksforgeeks.org/how-to-handle-multiple-input-field-in-react-form-with-a-single-function/"
@@ -52,3 +52,11 @@
 23. for transition to work its initial class must be there otherwise it will be glitch.
 
 24. navigating to same comp does not cause re-mounting
+
+25. The default value of flex-shrink of a flex item is 1, which means the card\_\_content should be able to shrink as much as it wants to. Surprisingly, the result is not what we expected!
+
+26. min-width: 0px; very important property for solving the above problem.
+
+27. div's by default widt is 100% of its parent but for inline block its equal to its content width.
+
+The flexbox algorithm refuses to shrink a child below its minimum size.
