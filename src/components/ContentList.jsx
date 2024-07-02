@@ -18,7 +18,7 @@ export default function ContentList(props) {
   useEffect(() => {
     setrange([0, Math.ceil(window.innerWidth / props.width)]);
     setMdata([]);
-  }, [props.range]);
+  }, [props.range[0], props.range[1]]);
 
   useEffect(() => {
     getMovies(
@@ -27,7 +27,7 @@ export default function ContentList(props) {
         Math.min(index_range[1], props.list_data.content.length)
       )
     );
-  }, [index_range]);
+  }, [index_range[0], index_range[1]]);
 
   let dummy_cards = [];
   for (let i = 0; i < Math.ceil(window.innerWidth / props.width); i++) {
@@ -44,7 +44,7 @@ export default function ContentList(props) {
       )
     );
     setMdata(final_data);
-    // setTimeout(() => setMdata(final_data), 2000);
+    // setTimeout(() => setMdata(final_data), 20000);
   }
 
   return (
@@ -123,6 +123,7 @@ export default function ContentList(props) {
                   class={"video-card"}
                   translate={translate}
                   key={index}
+                  thumb_width={props.width}
                 />
               ))}
         </div>

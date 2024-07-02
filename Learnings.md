@@ -70,8 +70,10 @@
 
 The flexbox algorithm refuses to shrink a child below its minimum size.
 
+33. use effect depedency array must be a pure value not a array
+
 1. promises are added to the queue only after the main frame executes
-2. for functions inside any fn or global scope they firstly added to the environment table
+1. for functions inside any fn or global scope they firstly added to the environment table
    example ->
    fn hello(){
    let val;

@@ -54,29 +54,17 @@ export default function Preview2(props) {
           ? preview_content.map((item, index) => (
               <div className="featured-container">
                 <img
-                  src={
-                    preview_content[curr_idx]
-                      ? preview_content[curr_idx].cover_img
-                      : ""
-                  }
+                  src={preview_content[index].cover_img}
                   alt=""
                   className="movie-image"
                 />
                 <div className="movie-info">
                   <img
-                    src={
-                      preview_content[curr_idx]
-                        ? preview_content[curr_idx].name_img
-                        : ""
-                    }
+                    src={preview_content[index].name_img}
                     alt=""
                     className="movie-title"
                   />
-                  <div className="desc-text">
-                    {preview_content[curr_idx]
-                      ? preview_content[curr_idx].desc
-                      : ""}
-                  </div>
+                  <div className="desc-text">{preview_content[index].desc}</div>
                   <div className="play-info">
                     <div className="pi-btns" onClick={playvideo}>
                       <PlayArrow />

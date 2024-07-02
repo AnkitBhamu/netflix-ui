@@ -25,10 +25,10 @@ export default function Home() {
 
   let [range, setrange] = useState(
     window.innerWidth < 500
-      ? [0, Math.ceil(window.innerWidth / 80)]
+      ? [0, Math.ceil(window.innerWidth / 90)]
       : [0, Math.ceil(window.innerWidth / 200)]
   );
-  let [width, setwidth] = useState(window.innerWidth < 500 ? 80 : 200);
+  let [width, setwidth] = useState(window.innerWidth < 500 ? 90 : 200);
 
   // changing the window size
   // it is fired with every pixel that change
@@ -36,8 +36,8 @@ export default function Home() {
   window.onresize = () => {
     ownfunction(() => {
       if (window.innerWidth < 500) {
-        setrange([0, Math.ceil(window.innerWidth / 80)]);
-        setwidth(80);
+        setrange([0, Math.ceil(window.innerWidth / 90)]);
+        setwidth(90);
       } else {
         setrange([0, Math.ceil(window.innerWidth / 200)]);
         setwidth(200);

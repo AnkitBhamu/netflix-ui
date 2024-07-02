@@ -11,7 +11,6 @@ export default function VideoCard(props) {
   let [added, listadd] = useState(props.cardType === "mylist" ? true : false);
   let [cookies, setcookie, removecookie] = useCookies();
   let [itrue, setinfo] = useState(false);
-  console.log("video card width is : ", props.thumb_width);
 
   async function updatemylist(mid) {
     try {
@@ -117,11 +116,11 @@ export default function VideoCard(props) {
           src={props.videodata.thumb_img}
           alt=""
         />
-      ) : null}
+      ) : (
+        <CardSuspense />
+      )}
 
       {/* {props.videodata && hovered === true ? renderVideoInfo() : null} */}
-
-      {!props.videodata ? <CardSuspense /> : null}
     </div>
   );
 }
