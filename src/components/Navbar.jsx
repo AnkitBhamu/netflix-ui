@@ -36,6 +36,7 @@ export default function Navbar(props) {
         <div
           className="links"
           onClick={() => {
+            window.scrollTo(0, 0);
             props.setType ? props.setType("series") : navigate("/home");
           }}
         >
@@ -44,6 +45,7 @@ export default function Navbar(props) {
         <div
           className="links"
           onClick={() => {
+            window.scrollTo(0, 0);
             props.setType ? props.setType("movies") : navigate("/home");
           }}
         >
@@ -52,6 +54,7 @@ export default function Navbar(props) {
         <div
           className="links"
           onClick={() => {
+            window.scrollTo(0, 0);
             props.setType ? props.setType("movies") : navigate("/home");
           }}
         >

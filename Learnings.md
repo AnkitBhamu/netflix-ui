@@ -66,6 +66,8 @@
 
 31. every reacted element is first class citizen so we can do whatever we can do with it.
 
+32. useeffect can track any value in its dependency list
+
 The flexbox algorithm refuses to shrink a child below its minimum size.
 
 1. promises are added to the queue only after the main frame executes

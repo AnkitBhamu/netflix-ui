@@ -1,8 +1,8 @@
 .register-main {
   background-image: linear-gradient(
       90deg,
-      rgba(0, 0, 0, 1) 0%,
-      rgba(18, 0, 36, 1) 16%,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(18, 0, 36, 0.7) 16%,
       rgba(47, 0, 255, 0) 100%
     ),
     url("../images/IN-en-20240610-popsignuptwoweeks-perspective_alpha_website_small.jpg");

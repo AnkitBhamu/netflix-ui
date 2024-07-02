@@ -6,13 +6,12 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { useCookies } from "react-cookie";
 
-let preview_content = [];
-
 export default function Preview2(props) {
   let cookie = useCookies()[0];
   let navigate = useNavigate();
   let [data_loaded, setDataloaded] = useState(false);
   let [curr_idx, setidx] = useState(0);
+  let [preview_content, setcontent] = useState([]);
 
   if (data_loaded) {
     setTimeout(() => {
@@ -26,17 +25,18 @@ export default function Preview2(props) {
     });
   }
   function get_data() {
-    preview_content = axios
+    axios
       .get(
         process.env.REACT_APP_API_URL + "/api/movies/preview2/" + props.type,
         { headers: { Authorization: `Bearer ${cookie["user-details"].token}` } }
       )
       .then((response) => {
-        preview_content = response.data;
+        setcontent(response.data);
         setDataloaded(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setcontent([]));
   }
+
   useEffect(() => {
     get_data();
   }, [props.type]);
@@ -50,7 +50,7 @@ export default function Preview2(props) {
         style={{ transform: `translate(${-100 * curr_idx}vw)` }}
         className="slider-wrapper"
       >
-        {data_loaded === true
+        {data_loaded === true && preview_content
           ? preview_content.map((item, index) => (
               <div className="featured-container">
                 <img

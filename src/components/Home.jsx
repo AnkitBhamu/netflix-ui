@@ -6,12 +6,32 @@ import ContentList from "./ContentList";
 import axios from "axios";
 import Footer from "./Footer";
 import { useCookies } from "react-cookie";
-import { useLocation, useNavigate } from "react-router";
+
+// initialise our debouncer
+function debouncer(delay) {
+  let timeout;
+  return function timeoutcreater(cb) {
+    clearTimeout(timeout);
+    timeout = setTimeout(cb, delay);
+  };
+}
+
+let ownfunction = debouncer(500);
 
 export default function Home() {
   let cookie = useCookies()[0];
   let [content_type, setcontent] = useState("movies");
   let [list_data, setList] = useState([]);
+  let [range, setrange] = useState([0, Math.ceil(window.innerWidth / 250)]);
+
+  // changing the window size
+  // it is fired with every pixel that change
+  // lets create a debouncer
+  window.onresize = () => {
+    ownfunction(() => {
+      setrange([0, Math.ceil(window.innerWidth / 250)]);
+    });
+  };
 
   function get_data() {
     axios
@@ -31,11 +51,10 @@ export default function Home() {
   return (
     <div>
       <Navbar setType={setcontent} />
-      {/* <Preview type={content_type} /> */}
       <Preview2 type={content_type} />
       <div className="content">
         {list_data.map((item, index) => (
-          <ContentList key={index} list_data={item} />
+          <ContentList range={range} key={index} list_data={item} />
         ))}
       </div>
       <Footer />

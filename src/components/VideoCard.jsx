@@ -110,13 +110,7 @@ export default function VideoCard(props) {
       }}
     >
       {props.videodata ? (
-        <img
-          // style={imageloaded === true ? { display: "inline" } : null}
-          // onLoad={() => setloaded(true)}
-          className="video-thumb"
-          src={props.videodata.thumb_img}
-          alt=""
-        />
+        <img className="video-thumb" src={props.videodata.thumb_img} alt="" />
       ) : null}
 
       {/* {props.videodata && hovered === true ? renderVideoInfo() : null} */}
