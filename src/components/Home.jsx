@@ -22,14 +22,26 @@ export default function Home() {
   let cookie = useCookies()[0];
   let [content_type, setcontent] = useState("movies");
   let [list_data, setList] = useState([]);
-  let [range, setrange] = useState([0, Math.ceil(window.innerWidth / 250)]);
+
+  let [range, setrange] = useState(
+    window.innerWidth < 500
+      ? [0, Math.ceil(window.innerWidth / 80)]
+      : [0, Math.ceil(window.innerWidth / 200)]
+  );
+  let [width, setwidth] = useState(window.innerWidth < 500 ? 80 : 200);
 
   // changing the window size
   // it is fired with every pixel that change
   // lets create a debouncer
   window.onresize = () => {
     ownfunction(() => {
-      setrange([0, Math.ceil(window.innerWidth / 250)]);
+      if (window.innerWidth < 500) {
+        setrange([0, Math.ceil(window.innerWidth / 80)]);
+        setwidth(80);
+      } else {
+        setrange([0, Math.ceil(window.innerWidth / 200)]);
+        setwidth(200);
+      }
     });
   };
 
@@ -54,7 +66,12 @@ export default function Home() {
       <Preview2 type={content_type} />
       <div className="content">
         {list_data.map((item, index) => (
-          <ContentList range={range} key={index} list_data={item} />
+          <ContentList
+            width={width}
+            range={range}
+            key={index}
+            list_data={item}
+          />
         ))}
       </div>
       <Footer />

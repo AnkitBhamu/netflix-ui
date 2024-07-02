@@ -11,12 +11,12 @@ export default function ContentList(props) {
   let [translate, setTranslate] = useState(0);
   let [index_range, setrange] = useState([
     0,
-    Math.ceil(window.innerWidth / 250),
+    Math.ceil(window.innerWidth / props.width),
   ]);
 
   // important function
   useEffect(() => {
-    setrange([0, Math.ceil(window.innerWidth / 250)]);
+    setrange([0, Math.ceil(window.innerWidth / props.width)]);
     setMdata([]);
   }, [props.range]);
 
@@ -30,7 +30,7 @@ export default function ContentList(props) {
   }, [index_range]);
 
   let dummy_cards = [];
-  for (let i = 0; i < Math.ceil(window.innerWidth / 250); i++) {
+  for (let i = 0; i < Math.ceil(window.innerWidth / props.width); i++) {
     dummy_cards.push(1);
   }
 
@@ -48,7 +48,10 @@ export default function ContentList(props) {
   }
 
   return (
-    <div className="content-list-main">
+    <div
+      className="content-list-main"
+      style={{ height: `${props.width / 0.66 + 10}px` }}
+    >
       <div className="list-name">{props.list_data.name}</div>
       <div
         className="non-scroll-wrapper"
@@ -63,15 +66,16 @@ export default function ContentList(props) {
           <>
             <div
               className="navigation-bars-bck"
+              style={{ height: `${props.width / 0.66 + 5}px` }}
               onClick={() => {
                 setrange([
                   Math.max(
-                    index_range[0] - Math.ceil(window.innerWidth / 250),
+                    index_range[0] - Math.ceil(window.innerWidth / props.width),
                     0
                   ),
                   Math.max(
-                    index_range[1] - Math.ceil(window.innerWidth / 250),
-                    Math.ceil(window.innerWidth / 250)
+                    index_range[1] - Math.ceil(window.innerWidth / props.width),
+                    Math.ceil(window.innerWidth / props.width)
                   ),
                 ]);
                 setMdata([]);
@@ -82,16 +86,17 @@ export default function ContentList(props) {
 
             <div
               className="navigation-bars-fwd"
+              style={{ height: `${props.width / 0.66 + 7}px` }}
               onClick={() => {
                 if (
                   index_range[0] <
                     props.list_data.content.length -
-                      Math.ceil(window.innerWidth / 250) &&
+                      Math.ceil(window.innerWidth / props.width) &&
                   index_range[1] < props.list_data.content.length
                 ) {
                   setrange([
                     index_range[1],
-                    index_range[1] + Math.ceil(window.innerWidth / 250),
+                    index_range[1] + Math.ceil(window.innerWidth / props.width),
                   ]);
                   setMdata([]);
                 }
@@ -110,6 +115,7 @@ export default function ContentList(props) {
                   translate={translate}
                   key={index}
                   videodata={item}
+                  thumb_width={props.width}
                 />
               ))
             : dummy_cards.map((item, index) => (

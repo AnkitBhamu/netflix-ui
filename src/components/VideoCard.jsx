@@ -6,13 +6,12 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Info } from "@mui/icons-material";
 import CardSuspense from "./CardSuspense";
-import Mdetail from "./Mdetail";
 
 export default function VideoCard(props) {
   let [added, listadd] = useState(props.cardType === "mylist" ? true : false);
   let [cookies, setcookie, removecookie] = useCookies();
   let [itrue, setinfo] = useState(false);
-  // let [imageloaded, setloaded] = useState(false);
+  console.log("video card width is : ", props.thumb_width);
 
   async function updatemylist(mid) {
     try {
@@ -106,11 +105,18 @@ export default function VideoCard(props) {
       className={[props.class]}
       style={{
         transform: `translateX(${props.translate}px)`,
-        height: itrue === true ? "400px" : "",
+        // height: itrue === true ? "400px" : "",
+        width: props.thumb_width ? `${props.thumb_width}px` : "",
+        height: props.thumb_width ? `${props.thumb_width / 0.66}px` : "",
       }}
     >
       {props.videodata ? (
-        <img className="video-thumb" src={props.videodata.thumb_img} alt="" />
+        <img
+          loading="lazy"
+          className="video-thumb"
+          src={props.videodata.thumb_img}
+          alt=""
+        />
       ) : null}
 
       {/* {props.videodata && hovered === true ? renderVideoInfo() : null} */}
