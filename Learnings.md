@@ -64,9 +64,7 @@
 
 30. react does fake navigation so whatever is done to global window object they are unchanged when nav from one compo to other so take care of it one such case is scroll location
 
-31. every reacted children is passed to the react component function always so we can use it to protect the routes or can use some global context kind of things
-
-32. interesting thing i learnt is props wrapping so react does not sends to actual doms whenever its own instanciation completes so whatever is inside the component is passed as a prop to the parent container
+31. every reacted element is first class citizen so we can do whatever we can do with it.
 
 The flexbox algorithm refuses to shrink a child below its minimum size.
 

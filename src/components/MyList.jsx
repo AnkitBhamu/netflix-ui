@@ -6,6 +6,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import Footer from "./Footer";
 import Emptyimage from "../images/—Pngtree—empty box icon for your_4814103.png";
+
 export default function MyList() {
   let [m_data, setMdata] = useState([]);
   let cookies = useCookies()[0];
@@ -33,7 +34,6 @@ export default function MyList() {
         )
       );
       if (final_data.length === 0) {
-        console.log("final data length is :", final_data.length);
         setEmptyList(true);
       } else setEmptyList(false);
       setMdata(final_data);
