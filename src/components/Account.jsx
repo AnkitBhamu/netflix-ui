@@ -16,6 +16,7 @@ export default function Account() {
   let [uid, setuid] = useState("");
   let [cookies, setcookie, removecookie] = useCookies();
   let navigate = useNavigate();
+
   function setCookie(response) {
     let now = new Date();
     setcookie("user-details", JSON.stringify(response.data), {
@@ -34,7 +35,10 @@ export default function Account() {
     try {
       let response = await axios.post(
         process.env.REACT_APP_API_URL + "/api/users/update",
-        data
+        data,
+        {
+          headers: { Authorization: `Bearer ${cookies["user-details"].token}` },
+        }
       );
 
       // update the cookie so that latest data can be used evert time
@@ -52,7 +56,12 @@ export default function Account() {
       try {
         let response = await axios.get(
           process.env.REACT_APP_API_URL +
-            `/api/users/getUser/${user_cookie._id}`
+            `/api/users/getUser/${user_cookie._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${cookies["user-details"].token}`,
+            },
+          }
         );
 
         setUsername(response.data.name);
@@ -151,7 +160,9 @@ export default function Account() {
           <button className="acc-btns save" onClick={() => updateprofile()}>
             Save
           </button>
-          <button className="acc-btns cancel">Cancel</button>
+          <button onClick={() => navigate(-1)} className="acc-btns cancel">
+            Cancel
+          </button>
           <button className="acc-btns delete">Delete Account</button>
         </div>
       </div>

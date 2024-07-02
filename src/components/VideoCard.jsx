@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Info } from "@mui/icons-material";
+import CardSuspense from "./CardSuspense";
+import Mdetail from "./Mdetail";
 
 export default function VideoCard(props) {
   let [added, listadd] = useState(props.cardType === "mylist" ? true : false);
   let [cookies, setcookie, removecookie] = useCookies();
-  let [hovered, sethov] = useState(false);
   let [itrue, setinfo] = useState(false);
+  // let [imageloaded, setloaded] = useState(false);
 
   async function updatemylist(mid) {
     try {
@@ -94,23 +96,32 @@ export default function VideoCard(props) {
   function playvideo(link) {
     navigate("/player", { state: { name: props.videodata.name, link: link } });
   }
+
   return (
     <div
+      onClick={() => {
+        window.scrollTo(0, 0);
+        navigate("/selected", { state: props.videodata });
+      }}
       className={[props.class]}
       style={{
         transform: `translateX(${props.translate}px)`,
         height: itrue === true ? "400px" : "",
       }}
-      onMouseEnter={() => {
-        sethov(true);
-      }}
-      onMouseLeave={() => {
-        sethov(false);
-      }}
     >
-      <img className="video-thumb" src={props.videodata.thumb_img} alt="" />
+      {props.videodata ? (
+        <img
+          // style={imageloaded === true ? { display: "inline" } : null}
+          // onLoad={() => setloaded(true)}
+          className="video-thumb"
+          src={props.videodata.thumb_img}
+          alt=""
+        />
+      ) : null}
 
-      {hovered === true ? renderVideoInfo() : null}
+      {/* {props.videodata && hovered === true ? renderVideoInfo() : null} */}
+
+      {!props.videodata ? <CardSuspense /> : null}
     </div>
   );
 }

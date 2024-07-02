@@ -59,4 +59,38 @@
 
 27. div's by default widt is 100% of its parent but for inline block its equal to its content width.
 
+28. != implictly converts the types also to make equal but !== does not.
+29. similarly == does but === not.
+
+30. react does fake navigation so whatever is done to global window object they are unchanged when nav from one compo to other so take care of it one such case is scroll location
+
+31. every reacted children is passed to the react component function always so we can use it to protect the routes or can use some global context kind of things
+
+32. interesting thing i learnt is props wrapping so react does not sends to actual doms whenever its own instanciation completes so whatever is inside the component is passed as a prop to the parent container
+
 The flexbox algorithm refuses to shrink a child below its minimum size.
+
+1. promises are added to the queue only after the main frame executes
+2. for functions inside any fn or global scope they firstly added to the environment table
+   example ->
+   fn hello(){
+   let val;
+   let val2;
+   function hello2(){
+   .... do something -----> env table at the start is like this ->
+   val -> undefined
+   val2 -> undefined
+   hello2 -> closure(args,opcode,parent-env::env::global env)  
+    }
+   }
+
+fn hello(){
+let val;
+let val2;
+let fn = function hello2(){
+.... do something -----> env table at the start is like this ->
+val -> undefined
+val2 -> undefined
+fn -> undefined  
+ }
+}

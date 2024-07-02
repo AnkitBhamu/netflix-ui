@@ -5,10 +5,43 @@ import { useState } from "react";
 import axios from "axios";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
+// initialise our debouncer
+function debouncer(delay) {
+  let timeout;
+
+  return function timeoutcreater(cb) {
+    clearTimeout(timeout);
+    timeout = setTimeout(cb, delay);
+  };
+}
+
+let ownfunction = debouncer(500);
+
 export default function ContentList(props) {
   let [m_data, setMdata] = useState([]);
   let [videosHovered, setHovered] = useState(false);
   let [translate, setTranslate] = useState(0);
+  let [index_range, setrange] = useState([
+    0,
+    Math.ceil(window.innerWidth / 250),
+  ]);
+  let dummy_cards = [];
+  for (let i = 0; i < Math.ceil(window.innerWidth / 250); i++) {
+    dummy_cards.push(1);
+  }
+
+  // console.log("Index range is following :,", index_range[0], index_range[1]);
+
+  // changing the window size
+  // it is fired with every pixel that change
+  // lets create a debouncer
+  window.onresize = () => {
+    ownfunction(() => {
+      // console.log("window resized..!");
+      setrange([0, Math.ceil(window.innerWidth / 250)]);
+      setMdata([]);
+    });
+  };
 
   async function getMovies(l_data) {
     let final_data = await Promise.all(
@@ -20,11 +53,17 @@ export default function ContentList(props) {
       )
     );
     setMdata(final_data);
+    // setTimeout(() => setMdata(final_data), 2000);
   }
 
   useEffect(() => {
-    getMovies(props.list_data.content);
-  }, []);
+    getMovies(
+      props.list_data.content.slice(
+        index_range[0],
+        Math.min(index_range[1], props.list_data.content.length)
+      )
+    );
+  }, [index_range]);
 
   return (
     <div className="content-list-main">
@@ -43,9 +82,17 @@ export default function ContentList(props) {
             <div
               className="navigation-bars-bck"
               onClick={() => {
-                if (translate != 0) {
-                  setTranslate(translate + 242);
-                }
+                setrange([
+                  Math.max(
+                    index_range[0] - Math.ceil(window.innerWidth / 250),
+                    0
+                  ),
+                  Math.max(
+                    index_range[1] - Math.ceil(window.innerWidth / 250),
+                    Math.ceil(window.innerWidth / 250)
+                  ),
+                ]);
+                setMdata([]);
               }}
             >
               <ArrowBackIos style={{ width: "20px", height: "20px" }} />
@@ -55,12 +102,16 @@ export default function ContentList(props) {
               className="navigation-bars-fwd"
               onClick={() => {
                 if (
-                  Math.abs(translate) <=
-                  document.querySelector(".videos").getBoundingClientRect()
-                    .width -
-                    window.innerWidth
+                  index_range[0] <
+                    props.list_data.content.length -
+                      Math.ceil(window.innerWidth / 250) &&
+                  index_range[1] < props.list_data.content.length
                 ) {
-                  setTranslate(translate - 242);
+                  setrange([
+                    index_range[1],
+                    index_range[1] + Math.ceil(window.innerWidth / 250),
+                  ]);
+                  setMdata([]);
                 }
               }}
             >
@@ -70,14 +121,22 @@ export default function ContentList(props) {
         ) : null}
 
         <div className="videos">
-          {m_data.map((item, index) => (
-            <VideoCard
-              class={"video-card"}
-              translate={translate}
-              key={index}
-              videodata={item}
-            />
-          ))}
+          {m_data.length > 0
+            ? m_data.map((item, index) => (
+                <VideoCard
+                  class={"video-card"}
+                  translate={translate}
+                  key={index}
+                  videodata={item}
+                />
+              ))
+            : dummy_cards.map((item, index) => (
+                <VideoCard
+                  class={"video-card"}
+                  translate={translate}
+                  key={index}
+                />
+              ))}
         </div>
       </div>
     </div>

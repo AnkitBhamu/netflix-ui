@@ -39,10 +39,10 @@
   /* background-color: #2c2727; */
   background-color: black;
 }
-
+/* 
 .video-card-mylist:hover .video-thumb {
   display: none;
-}
+} */
 
 .footer-mylist {
   display: flex;

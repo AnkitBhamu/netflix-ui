@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import Emptyimage from "../images/—Pngtree—empty box icon for your_4814103.png";
 export default function MyList() {
   let [m_data, setMdata] = useState([]);
-  let [cookies, setcookie, removecookie] = useCookies();
+  let cookies = useCookies()[0];
   let [rendered, setrender] = useState(false);
   let [emptylist, setEmptyList] = useState(false);
 
@@ -16,7 +16,10 @@ export default function MyList() {
     try {
       let response1 = await axios.get(
         process.env.REACT_APP_API_URL +
-          `/api/users/getMyList/${cookies["user-details"]._id}`
+          `/api/users/getMyList/${cookies["user-details"]._id}`,
+        {
+          headers: { Authorization: `Bearer ${cookies["user-details"].token}` },
+        }
       );
 
       let final_data = await Promise.all(

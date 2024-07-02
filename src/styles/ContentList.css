@@ -1,5 +1,5 @@
 .content-list-main {
-  height: 160px;
+  height: 390px;
   width: auto;
   margin-left: 20px;
   margin-bottom: 50px;
@@ -30,7 +30,7 @@
   z-index: 120;
   top: 16px;
   border-radius: 6px;
-  height: 137px;
+  height: 387px;
   border: 1px solid #181616;
   color: white;
   display: flex;
@@ -47,7 +47,7 @@
   z-index: 120;
   top: 16px;
   border-radius: 6px;
-  height: 137px;
+  height: 387px;
   border: 1px solid #181616;
   color: white;
   display: flex;

@@ -1,0 +1,127 @@
+.mdetail-main {
+  width: auto;
+  color: white;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 40px 40px;
+  /* background: radial-gradient(
+      circle,
+      hsla(0, 0%, 100%, 10%) 35%,
+      hsla(219, 95%, 8%, 80%) 65%
+    ),
+    url("../Assets/Header\ Video\ Thumbnail.png"); */
+  /* background-size: cover; */
+}
+
+.movie-details-container {
+  width: 70%;
+  /* max-height: 500px;
+  height: 200px; */
+}
+
+.movie-logo {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.movie-ratings {
+  display: flex;
+  column-gap: 10px;
+  font-family: Montserrat, "Open Sans", sans-serif;
+  color: white;
+  font-weight: bold;
+  align-items: center;
+  font-size: 13px;
+}
+
+.age-cc {
+  width: 70px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4d4d529e;
+  border-radius: 20px;
+}
+
+.stars {
+  height: 13px;
+}
+
+.movie-desc {
+  padding: 20px 0 0 0;
+  max-width: 50%;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.m-btns {
+  display: flex;
+  column-gap: 10px;
+  padding-bottom: 10px;
+}
+
+.play-btn,
+.trailer-btn {
+  display: flex;
+  font-family: Montserrat, "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  justify-content: center;
+  color: white;
+  column-gap: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-btn {
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  width: 50px;
+  height: 40px;
+  justify-content: center;
+  color: white;
+  column-gap: 5px;
+  border-radius: 5px;
+  background-color: #4d4d529e;
+  cursor: pointer;
+}
+
+.play-btn {
+  background-color: red;
+}
+
+.trailer-btn {
+  background-color: #4d4d529e;
+}
+
+.author {
+  display: flex;
+  column-gap: 10px;
+  font-family: Montserrat, "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.separator {
+  width: 1px;
+  height: 20px;
+  background-color: #8b717199;
+}
+
+.desc-text {
+  font-family: Montserrat, "Open Sans", sans-serif;
+  display: flex;
+  width: 100%;
+  word-wrap: break-word;
+  font-size: 16px;
+  line-height: 20px;
+}

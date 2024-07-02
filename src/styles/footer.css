@@ -1,14 +1,12 @@
 .footer {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
+  width: auto;
   color: white;
   font-family: Roboto, Arial;
   font-size: 20px;
-  row-gap: 10px;
-  align-items: center;
   margin-top: 150px;
   margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .fa {
@@ -24,13 +22,19 @@
 
 .terms {
   display: flex;
-  column-gap: 10px;
+  column-gap: 15px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .footer-links {
   text-decoration: none;
   color: white;
   font-size: 13px;
+}
+
+.tmdb_logo {
+  height: 20px;
 }
 
 @media screen and (max-width: 550px) {

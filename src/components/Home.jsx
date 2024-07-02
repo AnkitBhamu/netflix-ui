@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Preview from "./Preview";
+import Preview2 from "./Preview2";
 import ContentList from "./ContentList";
 import axios from "axios";
 import Footer from "./Footer";
@@ -8,24 +9,15 @@ import { useCookies } from "react-cookie";
 import { useLocation, useNavigate } from "react-router";
 
 export default function Home() {
-  let [cookie, setcookie, removecookie] = useCookies();
+  let cookie = useCookies()[0];
   let [content_type, setcontent] = useState("movies");
   let [list_data, setList] = useState([]);
-  let navigate = useNavigate();
-
-  function checkUserLogged() {
-    let item = cookie["user-details"];
-    if (!item) {
-      navigate("/login");
-    }
-  }
-
-  useEffect(checkUserLogged, [content_type]);
 
   function get_data() {
     axios
       .get(
-        process.env.REACT_APP_API_URL + `/api/movies/listsAll/${content_type}`
+        process.env.REACT_APP_API_URL + `/api/movies/listsAll/${content_type}`,
+        { headers: { Authorization: `Bearer ${cookie["user-details"].token}` } }
       )
       .then((response) => {
         setList(response.data.data);
@@ -39,13 +31,13 @@ export default function Home() {
   return (
     <div>
       <Navbar setType={setcontent} />
-      <Preview type={content_type} />
+      {/* <Preview type={content_type} /> */}
+      <Preview2 type={content_type} />
       <div className="content">
         {list_data.map((item, index) => (
           <ContentList key={index} list_data={item} />
         ))}
       </div>
-      {/* <VideoPlayer /> */}
       <Footer />
     </div>
   );
