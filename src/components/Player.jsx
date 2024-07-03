@@ -4,6 +4,7 @@ import volume from "../Assets/volume-2.png";
 import settings from "../Assets/settings.png";
 import pinp from "../Assets/ri_picture-in-picture-2-fill.png";
 import fscreen from "../Assets/Full screen.png";
+import MoonLoader from "react-spinners/MoonLoader";
 import {
   ArrowBackIos,
   FastForwardOutlined,
@@ -22,6 +23,7 @@ export default function Player() {
   let [playedduration, setplayedduration] = useState("00:00:00");
   let [progresswidth, setprogresswidth] = useState(0);
   let [settingsclicked, setsettingsclicked] = useState(false);
+  let [loading, setloading] = useState(false);
 
   function render_settings() {
     return (
@@ -113,9 +115,25 @@ export default function Player() {
 
   return (
     <div className="player-main">
+      <MoonLoader
+        size={60}
+        color="blue"
+        loading={loading}
+        cssOverride={{
+          zIndex: "1000",
+          position: "fixed",
+        }}
+      />
       <video
         onDurationChange={() => updateduration()}
         onTimeUpdate={() => handleplaying()}
+        onWaiting={() => setloading(true)}
+        onLoadStart={() => setloading(true)}
+        onLoadedData={() => setloading(false)}
+        onPlaying={() => setloading(false)}
+        onEnded={(event) => {
+          setplay(false);
+        }}
         className="video-player"
         src={vid_info.state.link}
       ></video>
