@@ -1,8 +1,7 @@
 .slider-wrapper {
   display: flex;
   width: max-content;
-  transform: translate(0px);
-  transition: 1s;
+  transition: transform 1s;
   overflow: hidden;
 }
 
@@ -18,7 +17,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  transition: 2s;
 }
 
 .content-type {

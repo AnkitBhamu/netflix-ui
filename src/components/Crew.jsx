@@ -1,5 +1,5 @@
 import "../styles/Crew.css";
-import director from "../Assets/director.png";
+import no_image from "../Assets/no_image.png";
 
 import React from "react";
 
@@ -11,7 +11,12 @@ export default function Crew(props) {
         {props.crew &&
           props.crew.map((item, index) => (
             <div className="crew-card">
-              <img className="crew-image" src={item.profile_pic} alt="" />
+              <img
+                className="crew-image"
+                onError={(e) => (e.target.attributes["src"].value = no_image)}
+                src={item.profile_pic}
+                alt=""
+              />
               <div className="crew-name">{item.original_name}</div>
               <div className="crew-work">{item.job}</div>
             </div>
@@ -23,7 +28,12 @@ export default function Crew(props) {
         {props.cast &&
           props.cast.map((item, index) => (
             <div className="crew-card">
-              <img className="crew-image" src={item.profile_pic} alt="" />
+              <img
+                className="crew-image"
+                onError={(e) => (e.target.attributes["src"].value = no_image)}
+                src={item.profile_pic}
+                alt=""
+              />
               <div className="crew-name">{item.original_name}</div>
               <div className="crew-work">{item.character}</div>
             </div>

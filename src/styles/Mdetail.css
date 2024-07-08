@@ -6,13 +6,7 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 0 0 40px 40px;
-  /* background: radial-gradient(
-      circle,
-      hsla(0, 0%, 100%, 10%) 35%,
-      hsla(219, 95%, 8%, 80%) 65%
-    ),
-    url("../Assets/Header\ Video\ Thumbnail.png"); */
-  /* background-size: cover; */
+  transition: ease-in-out 1s;
 }
 
 .movie-details-container {

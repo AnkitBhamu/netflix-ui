@@ -47,7 +47,7 @@ export default function Preview2(props) {
         {props.type && props.type === "series" ? "Series" : "Movies"}
       </div>
       <div
-        style={{ transform: `translate(${-100 * curr_idx}vw)` }}
+        style={{ transform: `translateX(${-100 * curr_idx}vw)` }}
         className="slider-wrapper"
       >
         {data_loaded === true && preview_content

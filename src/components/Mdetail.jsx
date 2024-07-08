@@ -34,7 +34,7 @@ export default function Mdetail(props) {
     <div
       className="mdetail-main"
       style={{
-        background: `linear-gradient(45deg, hsla(0, 0%, 0%, 0.8) 40%, hsla(0, 0%, 100%, 0) 50%),
+        background: `linear-gradient(45deg, hsla(0, 0%, 0%, 0.8) 40%, hsla(0, 0%, 0%, 0.5) 50%),
     url(${props.data["cover_img"]})`,
         backgroundSize: "cover",
       }}

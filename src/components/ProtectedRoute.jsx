@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router";
@@ -15,5 +16,12 @@ export default function ProtectedRoute(props) {
   }
 
   useEffect(checkUserLogged, []);
-  return <div>{user_verified ? props.children : null}</div>;
+  return (
+    <motion.div
+      animate={{ opacity: [0, 25, 50, 75, 100] }}
+      transition={{ ease: "easeInOut", duration: 2 }}
+    >
+      {user_verified ? props.children : null};
+    </motion.div>
+  );
 }

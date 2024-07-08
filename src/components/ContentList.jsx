@@ -11,12 +11,12 @@ export default function ContentList(props) {
   let [translate, setTranslate] = useState(0);
   let [index_range, setrange] = useState([
     0,
-    Math.ceil(window.innerWidth / props.width),
+    Math.ceil(window.innerWidth / (props.width + 10)),
   ]);
 
   // important function
   useEffect(() => {
-    setrange([0, Math.ceil(window.innerWidth / props.width)]);
+    setrange([0, Math.ceil(window.innerWidth / (props.width + 10))]);
     setMdata([]);
   }, [props.range[0], props.range[1]]);
 
@@ -30,7 +30,7 @@ export default function ContentList(props) {
   }, [index_range[0], index_range[1]]);
 
   let dummy_cards = [];
-  for (let i = 0; i < Math.ceil(window.innerWidth / props.width); i++) {
+  for (let i = 0; i < Math.ceil(window.innerWidth / (props.width + 10)); i++) {
     dummy_cards.push(1);
   }
 
@@ -70,12 +70,14 @@ export default function ContentList(props) {
               onClick={() => {
                 setrange([
                   Math.max(
-                    index_range[0] - Math.ceil(window.innerWidth / props.width),
+                    index_range[0] -
+                      Math.ceil(window.innerWidth / (props.width + 10)),
                     0
                   ),
                   Math.max(
-                    index_range[1] - Math.ceil(window.innerWidth / props.width),
-                    Math.ceil(window.innerWidth / props.width)
+                    index_range[1] -
+                      Math.ceil(window.innerWidth / (props.width + 10)),
+                    Math.ceil(window.innerWidth / (props.width + 10))
                   ),
                 ]);
                 setMdata([]);
@@ -91,12 +93,13 @@ export default function ContentList(props) {
                 if (
                   index_range[0] <
                     props.list_data.content.length -
-                      Math.ceil(window.innerWidth / props.width) &&
+                      Math.ceil(window.innerWidth / (props.width + 10)) &&
                   index_range[1] < props.list_data.content.length
                 ) {
                   setrange([
                     index_range[1],
-                    index_range[1] + Math.ceil(window.innerWidth / props.width),
+                    index_range[1] +
+                      Math.ceil(window.innerWidth / (props.width + 10)),
                   ]);
                   setMdata([]);
                 }
